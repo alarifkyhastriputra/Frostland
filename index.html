@@ -2,153 +2,115 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>FROSTLAND_NET - Life Steal & Command Member</title>
+    <title>FROSTLAND_NET</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #0f172a;
+            background: radial-gradient(circle at top, #020617, #000000);
             color: #e5e7eb;
-        }
-        header {
-            background: linear-gradient(90deg, #ef4444, #22c55e);
-            padding: 22px;
-            text-align: center;
-            color: #020617;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .container {
-            max-width: 1000px;
-            margin: auto;
+            max-width: 900px;
+            width: 100%;
             padding: 20px;
-        }
-        .card {
-            background-color: #020617;
-            border-radius: 14px;
-            padding: 22px;
-            margin-bottom: 22px;
-            box-shadow: 0 0 14px rgba(0,0,0,0.6);
+            text-align: center;
         }
         h1 {
-            margin: 0;
-        }
-        h2 {
-            color: #38bdf8;
-            margin-top: 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        ul li {
+            font-size: 42px;
             margin-bottom: 10px;
+            letter-spacing: 2px;
         }
-        code {
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+        .card {
             background: #020617;
-            padding: 6px 10px;
-            border-radius: 6px;
-            color: #22c55e;
-            font-size: 14px;
+            border-radius: 16px;
+            padding: 30px 20px;
+            box-shadow: 0 0 18px rgba(0,0,0,0.7);
+            transition: transform 0.25s ease;
         }
-        .tag {
+        .card:hover {
+            transform: translateY(-8px);
+        }
+        .icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        .card h2 {
+            color: #38bdf8;
+        }
+        .card p {
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+        .btn {
             display: inline-block;
-            background: #ef4444;
+            padding: 12px 26px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            background: linear-gradient(90deg, #22c55e, #38bdf8);
             color: #020617;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            margin-left: 6px;
+        }
+        .ip-box {
+            background: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 18px;
+            color: #22c55e;
+            user-select: all;
         }
         footer {
-            text-align: center;
-            padding: 16px;
-            color: #94a3b8;
+            margin-top: 40px;
             font-size: 14px;
-        }
-        .divider {
-            height: 1px;
-            background: #1e293b;
-            margin: 18px 0;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>FROSTLAND_NET</h1>
-    <p>Life Steal System • Command Member</p>
-</header>
-
 <div class="container">
+    <h1>FROSTLAND_NET</h1>
+    <p class="subtitle">Minecraft Survival RPG</p>
 
-    <!-- LIFE STEAL -->
-    <div class="card">
-        <h2>Life Steal (Sistem Darah)</h2>
-        <ul>
-            <li>Setiap pemain yang mengalami kematian akan kehilangan <strong>1 (satu) darah</strong>.</li>
-            <li>Jumlah darah pemain <strong>tidak dapat berkurang hingga 0 (nol)</strong>.</li>
-            <li>Server secara otomatis menjaga agar pemain tetap memiliki <strong>darah minimum</strong>.</li>
-            <li>Pemain <strong>tidak akan dikenakan sanksi ban</strong> akibat kehabisan darah.</li>
-        </ul>
+    <div class="cards">
+
+        <!-- FITUR -->
+        <div class="card">
+            <div class="icon">📘</div>
+            <h2>Fitur Server</h2>
+            <p>Life Steal, Command Member, dan sistem gameplay.</p>
+            <a href="lifesteal.html" class="btn">Buka Fitur</a>
+        </div>
+
+        <!-- IP SERVER -->
+        <div class="card">
+            <div class="icon">🌐</div>
+            <h2>IP Server</h2>
+            <p>Gunakan IP berikut untuk masuk ke server.</p>
+            <div class="ip-box">play.frostland.net</div>
+        </div>
+
     </div>
 
-    <!-- PEROLEHAN DARAH -->
-    <div class="card">
-        <h2>Perolehan Darah</h2>
-        <p>Darah pemain dapat diperoleh melalui metode berikut:</p>
-        <ul>
-            <li>Melalui <strong>crafting</strong> sesuai resep yang telah ditentukan oleh server.</li>
-            <li>Drop dari pemain yang mati, termasuk apabila pemain tersebut adalah <strong>diri sendiri</strong>.</li>
-            <li>Darah yang diperoleh dapat digunakan untuk <strong>menambah jumlah darah pemain</strong>.</li>
-        </ul>
-    </div>
-
-    <!-- KEMATIAN -->
-    <div class="card">
-        <h2>Kematian & Lokasi Terakhir</h2>
-        <p>Pemain dapat kembali ke lokasi kematian terakhir dengan perintah:</p>
-        <code>/back</code>
-    </div>
-
-    <!-- COMMAND MEMBER -->
-    <div class="card">
-        <h2>Command Member</h2>
-
-        <h3>🔴 Life Steal</h3>
-        <ul>
-            <li><code>/lifesteal</code> — Melihat informasi sistem Life Steal</li>
-            <li><code>/lifesteal hearts</code> — Melihat jumlah darah</li>
-            <li><code>/lifesteal withdraw &lt;jumlah&gt;</code> — Mengubah darah menjadi item <span class="tag">Opsional</span></li>
-            <li><code>/lifesteal use</code> — Menggunakan item darah</li>
-        </ul>
-
-        <div class="divider"></div>
-
-        <h3>🌍 Teleport</h3>
-        <ul>
-            <li><code>/rtp</code> — Teleport ke lokasi acak</li>
-            <li><code>/tpa &lt;player&gt;</code> — Meminta teleport</li>
-            <li><code>/tpaccept</code> — Menerima teleport</li>
-            <li><code>/tpdeny</code> — Menolak teleport</li>
-        </ul>
-
-        <div class="divider"></div>
-
-        <h3>🎒 Essentials & Ekonomi</h3>
-        <ul>
-            <li><code>/spawn</code> — Teleport ke spawn</li>
-            <li><code>/sethome</code> — Menyimpan rumah</li>
-            <li><code>/home</code> — Pergi ke rumah</li>
-            <li><code>/balance</code> / <code>/bal</code> — Melihat saldo</li>
-            <li><code>/pay &lt;player&gt; &lt;jumlah&gt;</code> — Mengirim uang</li>
-            <li><code>/ah</code> — Auction House</li>
-            <li><code>/skills</code> — Skill RPG</li>
-        </ul>
-    </div>
-
+    <footer>
+        © 2026 FROSTLAND_NET
+    </footer>
 </div>
-
-<footer>
-    © 2026 FROSTLAND_NET • Minecraft Survival RPG
-</footer>
 
 </body>
 </html>
