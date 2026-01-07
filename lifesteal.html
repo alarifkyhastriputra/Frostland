@@ -2,7 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>FROSTLAND_NET - Fitur Server</title>
+    <title>FROSTLAND_NET - Life Steal SMP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
@@ -21,18 +22,26 @@
             margin: auto;
             padding: 20px;
         }
-        .back {
+
+        /* KEMBALI KE MENU (ATAS) */
+        .back-menu {
             text-align: center;
             margin-bottom: 20px;
         }
-        .back a {
-            padding: 10px 22px;
+        .back-menu a {
+            display: inline-block;
+            padding: 10px 24px;
             border-radius: 10px;
             background: linear-gradient(90deg, #22c55e, #38bdf8);
             color: #020617;
             text-decoration: none;
             font-weight: bold;
+            transition: opacity 0.2s ease;
         }
+        .back-menu a:hover {
+            opacity: 0.85;
+        }
+
         .card {
             background-color: #020617;
             border-radius: 14px;
@@ -40,8 +49,19 @@
             margin-bottom: 22px;
             box-shadow: 0 0 14px rgba(0,0,0,0.6);
         }
+        h1 {
+            margin: 0;
+        }
         h2 {
             color: #38bdf8;
+            margin-top: 0;
+        }
+        h3 {
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+        ul {
+            padding-left: 20px;
         }
         ul li {
             margin-bottom: 10px;
@@ -51,6 +71,48 @@
             padding: 6px 10px;
             border-radius: 6px;
             color: #22c55e;
+            font-size: 14px;
+        }
+        .tag {
+            display: inline-block;
+            background: #ef4444;
+            color: #020617;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-left: 6px;
+        }
+        .divider {
+            height: 1px;
+            background: #1e293b;
+            margin: 18px 0;
+        }
+
+        /* FLOATING MENU */
+        .floating-back {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 18px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #22c55e, #38bdf8);
+            color: #020617;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            z-index: 1000;
+        }
+        .floating-back:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 16px;
+            color: #94a3b8;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -58,43 +120,89 @@
 
 <header>
     <h1>FROSTLAND_NET</h1>
-    <p>Fitur Server & Command Member</p>
+    <p>Life Steal SMP • Survival Multiplayer</p>
 </header>
 
 <div class="container">
 
-    <div class="back">
+    <!-- TOMBOL KEMBALI (ATAS) -->
+    <div class="back-menu">
         <a href="index.html">⬅ Kembali ke Menu</a>
     </div>
 
+    <!-- LIFE STEAL -->
     <div class="card">
-        <h2>Life Steal (Sistem Darah)</h2>
+        <h2>Life Steal SMP (Sistem Darah)</h2>
         <ul>
-            <li>Mati = kehilangan 1 darah</li>
-            <li>Darah tidak bisa habis (0)</li>
-            <li>Tidak ada ban kehabisan darah</li>
+            <li>Setiap pemain yang mati akan kehilangan <strong>1 (satu) darah</strong>.</li>
+            <li>Jumlah darah pemain <strong>tidak akan pernah mencapai 0 (nol)</strong>.</li>
+            <li>Sistem server otomatis menjaga pemain agar tetap memiliki <strong>darah minimum</strong>.</li>
+            <li>Pemain <strong>tidak akan terkena ban</strong> meskipun darah habis.</li>
         </ul>
     </div>
 
+    <!-- PEROLEHAN DARAH -->
     <div class="card">
         <h2>Perolehan Darah</h2>
+        <p>Darah dapat diperoleh dengan cara berikut:</p>
         <ul>
-            <li>Crafting sesuai resep</li>
-            <li>Drop dari pemain mati</li>
+            <li><strong>Crafting</strong> sesuai resep khusus dari server.</li>
+            <li><strong>Drop dari pemain yang mati</strong>, termasuk kematian diri sendiri.</li>
+            <li>Darah yang diperoleh dapat digunakan untuk <strong>menambah jumlah darah</strong>.</li>
         </ul>
     </div>
 
+    <!-- KEMATIAN -->
     <div class="card">
-        <h2>Command Member</h2>
+        <h2>Kematian & Lokasi Terakhir</h2>
+        <p>Pemain dapat kembali ke lokasi kematian terakhir menggunakan perintah:</p>
+        <code>/back</code>
+    </div>
+
+    <!-- COMMAND MEMBER -->
+    <div class="card">
+        <h2>Command Member (SMP)</h2>
+
+        <h3>❤️ Life Steal</h3>
         <ul>
-            <li><code>/lifesteal</code></li>
-            <li><code>/back</code></li>
-            <li><code>/tpa</code> / <code>/rtp</code></li>
-            <li><code>/spawn</code></li>
+            <li><code>/lifesteal</code> — Melihat informasi Life Steal</li>
+            <li><code>/lifesteal hearts</code> — Melihat jumlah darah</li>
+            <li><code>/lifesteal withdraw &lt;jumlah&gt;</code> — Mengubah darah menjadi item <span class="tag">Opsional</span></li>
+            <li><code>/lifesteal use</code> — Menggunakan item darah</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h3>🌍 Teleport</h3>
+        <ul>
+            <li><code>/rtp</code> — Teleport acak</li>
+            <li><code>/tpa &lt;player&gt;</code> — Minta teleport ke pemain lain</li>
+            <li><code>/tpaccept</code> — Menerima teleport</li>
+            <li><code>/tpdeny</code> — Menolak teleport</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h3>🎒 Survival & Ekonomi</h3>
+        <ul>
+            <li><code>/spawn</code> — Kembali ke spawn</li>
+            <li><code>/sethome</code> — Menyimpan rumah</li>
+            <li><code>/home</code> — Pergi ke rumah</li>
+            <li><code>/balance</code> / <code>/bal</code> — Melihat saldo</li>
+            <li><code>/pay &lt;player&gt; &lt;jumlah&gt;</code> — Transfer uang</li>
+            <li><code>/ah</code> — Auction House</li>
+            <li><code>/skills</code> — Skill RPG</li>
         </ul>
     </div>
 
 </div>
+
+<footer>
+    © 2026 FROSTLAND_NET • Life Steal SMP
+</footer>
+
+<!-- FLOATING BUTTON -->
+<a href="index.html" class="floating-back">🏠 Menu</a>
 
 </body>
 </html>
