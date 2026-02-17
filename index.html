@@ -1,120 +1,238 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>FROSTLAND_NET</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: radial-gradient(circle at top, #020617, #000000);
-            color: #e5e7eb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 900px;
-            width: 100%;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-        .subtitle {
-            color: #94a3b8;
-            margin-bottom: 40px;
-        }
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-        .card {
-            background: #020617;
-            border-radius: 16px;
-            padding: 30px 20px;
-            box-shadow: 0 0 18px rgba(0,0,0,0.7);
-            transition: transform 0.25s ease;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-        }
-        .icon {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-        .card h2 {
-            color: #38bdf8;
-        }
-        .card p {
-            color: #94a3b8;
-            margin-bottom: 25px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 26px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            background: linear-gradient(90deg, #22c55e, #38bdf8);
-            color: #020617;
-        }
-        .ip-box {
-            background: #020617;
-            border: 1px solid #1e293b;
-            border-radius: 10px;
-            padding: 12px;
-            font-size: 18px;
-            color: #22c55e;
-            user-select: all;
-        }
-        footer {
-            margin-top: 40px;
-            font-size: 14px;
-            color: #64748b;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frostland - The Eternal Soul</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background: radial-gradient(circle at top, #0b1226, #050816 70%);
+  color:white;
+  overflow-x:hidden;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 10%;
+  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.03);
+}
+
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  letter-spacing:2px;
+}
+
+.nav-btn{
+  padding:10px 25px;
+  border-radius:50px;
+  background:linear-gradient(90deg,#5a8bff,#a855f7);
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.nav-btn:hover{
+  opacity:0.8;
+  transform:scale(1.05);
+}
+
+.hero{
+  text-align:center;
+  padding:120px 20px 80px;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:70px;
+  margin-bottom:20px;
+  background:linear-gradient(90deg,#ffffff,#8ab4ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  max-width:600px;
+  margin:auto;
+  opacity:0.8;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
+  padding:50px 10%;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  border-radius:25px;
+  padding:30px;
+  text-align:center;
+  transition:0.4s;
+  box-shadow:0 0 40px rgba(0,140,255,0.1);
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 50px rgba(90,139,255,0.3);
+}
+
+.card h2{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.section{
+  padding:80px 10%;
+  text-align:center;
+}
+
+.server-box{
+  background:rgba(255,255,255,0.05);
+  padding:40px;
+  margin:20px auto;
+  border-radius:30px;
+  max-width:600px;
+  backdrop-filter:blur(15px);
+  box-shadow:0 0 50px rgba(90,139,255,0.2);
+}
+
+.server-box h3{
+  margin-bottom:15px;
+  font-weight:600;
+}
+
+.ip{
+  font-size:20px;
+  margin-bottom:10px;
+  opacity:0.9;
+}
+
+.copy-btn{
+  margin-top:15px;
+  padding:10px 20px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(90deg,#5a8bff,#a855f7);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.copy-btn:hover{
+  transform:scale(1.05);
+}
+
+.whatsapp{
+  margin-top:50px;
+}
+
+.whatsapp a{
+  padding:15px 40px;
+  border-radius:50px;
+  background:linear-gradient(90deg,#f59e0b,#f97316);
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  font-size:18px;
+  transition:0.3s;
+}
+
+.whatsapp a:hover{
+  opacity:0.8;
+}
+
+footer{
+  text-align:center;
+  padding:40px 10%;
+  opacity:0.5;
+  font-size:14px;
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-    <h1>FROSTLAND_NET</h1>
-    <p class="subtitle">Minecraft Survival RPG</p>
+<header>
+<div class="logo">Frostland</div>
+<a href="#server" class="nav-btn">Journey</a>
+</header>
 
-    <div class="cards">
+<section class="hero">
+<h1>Frostland</h1>
+<p>Jelajahi dunia kristal penuh keajaiban. Hadapi tantangan Lifesteal RPG dengan atmosfer premium dan pengalaman yang tak terlupakan.</p>
+</section>
 
-        <!-- FITUR -->
-        <div class="card">
-            <div class="icon">📘</div>
-            <h2>Fitur Server</h2>
-            <p>Life Steal, Command Member, dan sistem gameplay.</p>
-            <a href="lifesteal.html" class="btn">Buka Fitur</a>
-        </div>
-
-        <!-- IP SERVER -->
-        <div class="card">
-            <div class="icon">🌐</div>
-            <h2>IP Server</h2>
-            <p>Gunakan IP berikut untuk masuk ke server.</p>
-            <div class="ip-box">Java:</div>
-            <div class="ip-box">ip: frostlandj.nwaypanel.qzz.io </div>
-            <div class="ip-box">Bedrock:</div>
-            <div class="ip-box">ip: frostlandb.nwaypanel.qzz.io </div>
-            <div class="ip-box">port: 10424 </div>
-        </div>
-
-    </div>
-
-    <footer>
-        © 2026 FROSTLAND_NET
-    </footer>
+<section class="stats">
+<div class="card">
+<h2>89</h2>
+<p>Living Hearts</p>
 </div>
+
+<div class="card">
+<h2>1.21.1</h2>
+<p>Essence</p>
+</div>
+
+<div class="card">
+<h2>99%</h2>
+<p>Soul Uptime</p>
+</div>
+
+<div class="card">
+<h2>RPG</h2>
+<p>Atmosphere</p>
+</div>
+</section>
+
+<section id="server" class="section">
+
+<div class="server-box">
+<h3>Java Edition</h3>
+<div class="ip" id="javaIP">frostlandj.nwaypanel.qzz.io</div>
+<button class="copy-btn" onclick="copyIP('javaIP')">Copy PC Address</button>
+</div>
+
+<div class="server-box">
+<h3>Bedrock Edition</h3>
+<div class="ip" id="bedrockIP">frostlandb.nwaypanel.qzz.io : 10424</div>
+<button class="copy-btn" onclick="copyIP('bedrockIP')">Copy Mobile Address</button>
+</div>
+
+<div class="whatsapp">
+<a href="https://wa.me/62858204856933" target="_blank">Beli Rank via WhatsApp</a>
+</div>
+
+</section>
+
+<footer>
+© 2026 Frostland Network. Not an official Minecraft product.
+</footer>
+
+<script>
+function copyIP(id){
+  var text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("IP berhasil disalin!");
+}
+</script>
 
 </body>
 </html>
