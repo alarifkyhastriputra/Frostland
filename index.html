@@ -8,17 +8,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:'Inter',sans-serif;
-  background: radial-gradient(circle at top, #0b1226, #050816 70%);
+  background:#050816;
   color:white;
   overflow-x:hidden;
+}
+
+/* 🌌 GALAXY NEBULA BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  width:200%;
+  height:200%;
+  top:-50%;
+  left:-50%;
+  background:
+  radial-gradient(circle at 30% 40%, rgba(138,180,255,0.3), transparent 40%),
+  radial-gradient(circle at 70% 60%, rgba(168,85,247,0.3), transparent 40%),
+  radial-gradient(circle at 50% 20%, rgba(90,139,255,0.2), transparent 40%);
+  animation:nebulaMove 25s linear infinite;
+  z-index:-2;
+}
+
+@keyframes nebulaMove{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
+/* Canvas layer */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
 }
 
 header{
@@ -33,7 +58,6 @@ header{
 .logo{
   font-family:'Playfair Display',serif;
   font-size:24px;
-  letter-spacing:2px;
 }
 
 .nav-btn{
@@ -45,11 +69,7 @@ header{
   font-weight:600;
   transition:0.3s;
 }
-
-.nav-btn:hover{
-  opacity:0.8;
-  transform:scale(1.05);
-}
+.nav-btn:hover{transform:scale(1.1);}
 
 .hero{
   text-align:center;
@@ -65,84 +85,38 @@ header{
   -webkit-text-fill-color:transparent;
 }
 
-.hero p{
-  max-width:600px;
-  margin:auto;
-  opacity:0.8;
-  font-size:18px;
-  line-height:1.6;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:25px;
-  padding:50px 10%;
-}
-
-.card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(15px);
-  border-radius:25px;
-  padding:30px;
-  text-align:center;
-  transition:0.4s;
-  box-shadow:0 0 40px rgba(0,140,255,0.1);
-}
-
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 50px rgba(90,139,255,0.3);
-}
-
-.card h2{
-  font-size:28px;
-  margin-bottom:10px;
-}
-
 .section{
-  padding:80px 10%;
+  padding:60px 10%;
   text-align:center;
 }
 
 .server-box{
   background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
   padding:40px;
   margin:20px auto;
   border-radius:30px;
   max-width:600px;
-  backdrop-filter:blur(15px);
-  box-shadow:0 0 50px rgba(90,139,255,0.2);
+  box-shadow:0 0 60px rgba(90,139,255,0.2);
+  transition:0.4s;
 }
-
-.server-box h3{
-  margin-bottom:15px;
-  font-weight:600;
-}
-
-.ip{
-  font-size:20px;
-  margin-bottom:10px;
-  opacity:0.9;
+.server-box:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 80px rgba(168,85,247,0.4);
 }
 
 .copy-btn{
-  margin-top:15px;
   padding:10px 20px;
   border:none;
   border-radius:50px;
   background:linear-gradient(90deg,#5a8bff,#a855f7);
   color:white;
   cursor:pointer;
-  transition:0.3s;
-}
-
-.copy-btn:hover{
-  transform:scale(1.05);
+  margin-top:10px;
 }
 
 .whatsapp{
-  margin-top:50px;
+  margin-top:40px;
 }
 
 .whatsapp a{
@@ -153,22 +127,21 @@ header{
   color:white;
   font-weight:600;
   font-size:18px;
+  box-shadow:0 0 30px rgba(249,115,22,0.5);
   transition:0.3s;
 }
-
-.whatsapp a:hover{
-  opacity:0.8;
-}
+.whatsapp a:hover{transform:scale(1.1);}
 
 footer{
   text-align:center;
   padding:40px 10%;
-  opacity:0.5;
-  font-size:14px;
+  opacity:0.6;
 }
 </style>
 </head>
 <body>
+
+<canvas id="particles"></canvas>
 
 <header>
 <div class="logo">Frostland</div>
@@ -177,61 +150,116 @@ footer{
 
 <section class="hero">
 <h1>Frostland</h1>
-<p>Jelajahi dunia kristal penuh keajaiban. Hadapi tantangan Lifesteal RPG dengan atmosfer premium dan pengalaman yang tak terlupakan.</p>
-</section>
-
-<section class="stats">
-<div class="card">
-<h2>89</h2>
-<p>Living Hearts</p>
-</div>
-
-<div class="card">
-<h2>1.21.1</h2>
-<p>Essence</p>
-</div>
-
-<div class="card">
-<h2>99%</h2>
-<p>Soul Uptime</p>
-</div>
-
-<div class="card">
-<h2>RPG</h2>
-<p>Atmosphere</p>
-</div>
+<p>Dunia kristal bercahaya di tengah galaksi abadi. Lifesteal RPG dengan aura kosmik premium.</p>
 </section>
 
 <section id="server" class="section">
 
 <div class="server-box">
 <h3>Java Edition</h3>
-<div class="ip" id="javaIP">frostlandj.nwaypanel.qzz.io</div>
+<p id="javaIP">frostlandj.nwaypanel.qzz.io</p>
 <button class="copy-btn" onclick="copyIP('javaIP')">Copy PC Address</button>
 </div>
 
 <div class="server-box">
 <h3>Bedrock Edition</h3>
-<div class="ip" id="bedrockIP">frostlandb.nwaypanel.qzz.io : 10424</div>
+<p id="bedrockIP">frostlandb.nwaypanel.qzz.io : 10424</p>
 <button class="copy-btn" onclick="copyIP('bedrockIP')">Copy Mobile Address</button>
 </div>
 
 <div class="whatsapp">
-<a href="https://wa.me/62858204856933" target="_blank">Beli Rank via WhatsApp</a>
+<a href="https://wa.me/62858204856933?text=.menu" target="_blank">
+Beli Rank via WhatsApp
+</a>
 </div>
 
 </section>
 
 <footer>
-© 2026 Frostland Network. Not an official Minecraft product.
+© 2026 Frostland Network — Not an official Minecraft product.
 </footer>
 
 <script>
 function copyIP(id){
-  var text = document.getElementById(id).innerText;
+  let text = document.getElementById(id).innerText;
   navigator.clipboard.writeText(text);
   alert("IP berhasil disalin!");
 }
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+let number = 130;
+
+class Particle{
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.size = Math.random()*2+1;
+    this.speedX = Math.random()*0.4-0.2;
+    this.speedY = Math.random()*0.4-0.2;
+  }
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if(this.x<0 || this.x>canvas.width) this.speedX*=-1;
+    if(this.y<0 || this.y>canvas.height) this.speedY*=-1;
+  }
+  draw(){
+    ctx.fillStyle="rgba(138,180,255,0.8)";
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function connect(){
+  for(let a=0;a<particlesArray.length;a++){
+    for(let b=a;b<particlesArray.length;b++){
+      let dx = particlesArray[a].x - particlesArray[b].x;
+      let dy = particlesArray[a].y - particlesArray[b].y;
+      let distance = dx*dx + dy*dy;
+      if(distance < 10000){
+        ctx.strokeStyle="rgba(168,85,247,0.2)";
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x,particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x,particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function init(){
+  particlesArray=[];
+  for(let i=0;i<number;i++){
+    particlesArray.push(new Particle());
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particlesArray.forEach(p=>{
+    p.update();
+    p.draw();
+  });
+  connect();
+  requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+window.addEventListener("resize",()=>{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  init();
+});
 </script>
 
 </body>
